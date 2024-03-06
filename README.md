@@ -1,4 +1,4 @@
-# DevSecOps Pipeline Project README
+# DevSecOps Pipeline Project 
 
 ## Overview
 
