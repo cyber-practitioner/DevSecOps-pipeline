@@ -19,6 +19,6 @@ sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debi
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
 sudo apt-get update; sudo apt-get install jenkins -y;sudo systemctl start jenkins;sudo systemctl enable jenkins; sudo usermod -aG docker jenkins
 
-
+# install the cloned version of netflix
 git clone https://github.com/N4si/DevSecOps-Project.git; cd DevSecOps-Project; docker build --build-arg TMDB_V3_API_KEY=71061719c10df87c94da51725918446e -t netflix .
 docker run -d --name netflix -p 8081:80 netflix:latest

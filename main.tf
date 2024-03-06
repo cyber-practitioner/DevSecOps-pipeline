@@ -1,3 +1,5 @@
+#First EC2 instance will contain github clone of netflix and SAST tools installed
+
 provider "aws" {
   region = "us-east-1"
   profile = "project"
