@@ -74,7 +74,6 @@ pipeline{
     }
 }
 
-
 ''''
 If you get docker login failed errorr
 
