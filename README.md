@@ -1,4 +1,11 @@
 # DevSecOps Pipeline Project 
+## Table of Contents
+- [Overview](#overview)
+- [Infrastructure Setup](#infrastructure-setup)
+- [Pipeline Stages](#pipeline-stages)
+- [Getting Started with Terraform](#getting-started-with-terraform)
+- [Contributing](#contributing)
+- [Troubleshooting](#troubleshooting)
 
 ## Overview
 
@@ -49,7 +56,7 @@ This project infrastructure can be provisioned using Terraform. To get started:
    ```
    terraform apply -auto-approve
    ```
-   Applies the Terraform configuration to provision the AWS infrastructure as defined. The `--auto-approve` flag skips interactive approval.
+   Applies the Terraform configuration to provision the AWS infrastructure as defined. The `-auto-approve` flag skips interactive approval.
 
 3. **Destroy Infrastructure**:
    ```
@@ -61,7 +68,7 @@ Ensure you have AWS CLI configured and Terraform installed on your machine. Alwa
 
 ## Architecture Diagram
 
-![DevSecOps Pipeline Architecture](images/image.png)
+![DevSecOps Pipeline Architecture](images/project.png)
 
 *Diagram visualizing the workflow and integration of tools within the pipeline.*
 
