@@ -1,4 +1,4 @@
-
+# second EC2 instance
 resource "aws_instance" "monitoring-instance" {
   ami           = "ami-06aa3f7caf3a30282"
   instance_type = "t2.medium"
