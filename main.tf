@@ -4,28 +4,71 @@ provider "aws" {
 }
 
 resource "aws_instance" "test-instance" {
-  ami           = "ami-0a3c3a20c09d6f377"
+  ami           = "ami-06aa3f7caf3a30282"
   instance_type = "t2.large"
-  Name = "jenkins-instance"
-    user_data = <<-EOF
-              sudo apt-get update
-              sudo apt-get install docker.io -y
-              sudo usermod -aG docker $USER  # Replace with your system's username, e.g., 'ubuntu'
-              newgrp docker
-              sudo chmod 777 /var/run/docker.sock
-              docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
+  vpc_security_group_ids = [aws_security_group.Jenkins-sg.id]
+  user_data = "${file("script.sh")}"
 
-              sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
-              https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
-              echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-              https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
-              /etc/apt/sources.list.d/jenkins.list > /dev/null
-              sudo apt-get update
-              sudo apt-get install jenkins
-              sudo systemctl start jenkins
-              sudo systemctl enable jenkins
-              EOF
+  tags = {
+    Name = "Jenkins"
+}
+}
 
-#  tags = {
-#    Name = "example-instance"
+resource "aws_security_group" "Jenkins-sg" {
+  name        = "jenkins-sg"
+  description = "Allow inbound SSH and other traffic"
+  vpc_id      = "vpc-0fc26fe53d6c17730" # Replace with your VPC ID
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 8081
+    to_port     = 8081
+    description = "App_port"
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    description = "Jenkins"
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+resource "aws_eip" "demo_eip" {
+  vpc = true
+  instance= aws_instance.test-instance.id
+
+}
+
+
+resource "aws_security_group_rule" "allow_outbound" {
+  security_group_id = aws_security_group.Jenkins-sg.id
+
+  type             = "egress"
+  from_port        = 0
+  to_port          = 0
+  protocol         = "-1"
+  cidr_blocks      = ["0.0.0.0/0"]
 }
