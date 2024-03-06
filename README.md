@@ -47,13 +47,13 @@ This project infrastructure can be provisioned using Terraform. To get started:
 
 2. **Apply Terraform Configuration**:
    ```
-   terraform apply --auto-approve
+   terraform apply -auto-approve
    ```
    Applies the Terraform configuration to provision the AWS infrastructure as defined. The `--auto-approve` flag skips interactive approval.
 
 3. **Destroy Infrastructure**:
    ```
-   terraform destroy --auto-approve
+   terraform destroy -auto-approve
    ```
    Safely tears down the infrastructure provisioned by Terraform when the project is concluded.
 
@@ -80,8 +80,4 @@ Contributions to improve the pipeline or add new features are welcome. Please fo
 
 ---
 
-<<<<<<< HEAD
 *This README provides a high-level overview of the DevSecOps pipeline project. Detailed setup instructions and configurations for each tool and technology can be found in their respective official documentation.*
-=======
-*This README provides a high-level overview of the DevSecOps pipeline project. For detailed setup instructions and configurations, refer to the official documentation of each tool used in the pipeline.*
->>>>>>> origin/main
