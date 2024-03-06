@@ -80,4 +80,8 @@ Contributions to improve the pipeline or add new features are welcome. Please fo
 
 ---
 
+<<<<<<< HEAD
 *This README provides a high-level overview of the DevSecOps pipeline project. Detailed setup instructions and configurations for each tool and technology can be found in their respective official documentation.*
+=======
+*This README provides a high-level overview of the DevSecOps pipeline project. For detailed setup instructions and configurations, refer to the official documentation of each tool used in the pipeline.*
+>>>>>>> origin/main
