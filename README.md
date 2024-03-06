@@ -5,7 +5,7 @@
 - [Pipeline Stages](#pipeline-stages)
 - [Getting Started with Terraform](#getting-started-with-terraform)
 - [Contributing](#contributing)
-- [Troubleshooting](#troubleshooting)
+
 
 ## Overview
 
@@ -62,7 +62,7 @@ This project infrastructure can be provisioned using Terraform. To get started:
    ```
    terraform destroy -auto-approve
    ```
-   Safely tears down the infrastructure provisioned by Terraform when the project is concluded.
+   Safely tear down the infrastructure provisioned by Terraform when the project is concluded.
 
 Ensure you have AWS CLI configured and Terraform installed on your machine. Always review Terraform configurations before applying them to understand the resources being created, modified, or destroyed.
 
